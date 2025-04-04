@@ -1,14 +1,22 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, TransformControls } from "@react-three/drei";
 import { useState } from "react";
+import { MeshPhongMaterial, EdgesGeometry, LineSegments, LineBasicMaterial } from "three";
+import * as THREE from "three";
 
 function Box({ position, mode }: { position: [number, number, number]; mode: "translate" | "rotate" | "scale" }) {
   return (
     <TransformControls mode={mode}>
-      <mesh position={position} castShadow>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="orange" />
-      </mesh>
+      <group position={position}>
+        <mesh castShadow>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshPhongMaterial color="orange" />
+        </mesh>
+        <lineSegments>
+          <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
+          <lineBasicMaterial attach="material" color="white" linewidth={1} />
+        </lineSegments>
+      </group>
     </TransformControls>
   );
 }
