@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, TransformControls } from "@react-three/drei";
 import { useState } from "react";
-import { MeshPhongMaterial, EdgesGeometry, LineSegments, LineBasicMaterial } from "three";
 import * as THREE from "three";
 
 function Box({ position, mode }: { position: [number, number, number]; mode: "translate" | "rotate" | "scale" }) {
